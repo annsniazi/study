@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- saved from url=(0107)http://localhost:63342/pythonProject11/index.html?_ijt=cpkjjajavdh30s2d5ft2tfnjdl&_ij_reload=RELOAD_ON_SAVE -->
+<html lang="en" xmlns="http://www.w3.org/1999/html"><!--THIS IS HEAD PART--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale">
+        <title> index</title>
+    </head>
+
+    <body>
+    <form>
+        <header>
+            <h1><u>TO learn programming:</u></h1>
+<!--            <h1><u>sign up:</u></h1>-->
+        </header>
+
+        <main>
+            <div>
+            Name:
+            <input type="text" placeholder="Enter your name">
+            <br>
+            <br>
+            Email:
+            <input type="text" placeholder="Enter your email">
+            <br>
+            <br>
+            Password:
+            <input type="password" placeholder="Enter your password">
+                </div>
+
+            <div>
+                <h4>Are you a student?</h4>
+                <label for="id1">
+                <input type="radio" value="Yes" name="Student" id="id1">Yes
+                </label>
+
+                <label for="id2">
+                <input type="radio" value="Yes" name="Student" id="id2">No
+                </label>
+            </div>
+
+            <div>
+                <h4>From which city you belong?</h4>
+
+                <select name="country" id="id3">
+
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="India">India</option>
+                    <option value="America">America</option>
+                    <option value="China">China</option>
+                    <option value="England">England</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Canada">Canada</option>
+
+                </select>
+            </div>
+
+            <div>
+                <h4>From where you listen about our website?</h4>
+                <label for="Youtube">
+                    <input type="checkbox" value="Youtube" name="social platform" id="id4">Youtube
+                </label>
+
+                 <label for="Friends">
+                    <input type="checkbox" value="Friends" name="social platform" id="id5">Friends
+                </label>
+
+                 <label for="Google ads">
+                    <input type="checkbox" value="Google ads" name="social platform" id="id6">Google ads
+                </label>
+            </div>
+
+            <div>
+                <h4>What is programming experience?</h4>
+
+                <label for="id7">
+                <input type="radio" value="Beginner" name="Experience" id="id7">Beginner
+                </label>
+
+                 <label for="id8">
+                <input type="radio" value="Intermediate" name="Experience" id="id8">Intermediate
+                </label>
+
+                 <label for="id9">
+                <input type="radio" value="Pro" name="Experience" id="id9">Pro
+                </label>
+            </div>
+
+        </main>
+
+        <footer>
+            <div>
+                <h4>For what you visit our website?</h4>
+                <textarea name="Reason" id="id10" placeholder="Reason" rows="10"></textarea>
+                <br>
+                <a href="http://localhost:63342/homepage.html">Sign up</a>
+            </div>
+        </footer>
+    </form>
+    
+
+<script>
+(function() {
+  var ws = new WebSocket('ws://' + window.location.host + 
+             '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+             'referrer=' + encodeURIComponent(window.location.pathname));
+  ws.onmessage = function (msg) {
+      if (msg.data === 'reload') {
+          window.location.reload();
+      }
+      if (msg.data.startsWith('update-css ')) {
+          var messageId = msg.data.substring(11);
+          var links = document.getElementsByTagName('link');
+          for (var i = 0; i < links.length; i++) {
+              var link = links[i];
+              if (link.rel !== 'stylesheet') continue;
+              var clonedLink = link.cloneNode(true);
+              var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+              if (newHref !== link.href) {
+                clonedLink.href = newHref;
+              }
+              else {
+                var indexOfQuest = newHref.indexOf('?');
+                if (indexOfQuest >= 0) {
+                  // to support ?foo#hash 
+                  clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' + 
+                                    newHref.substring(indexOfQuest + 1);
+                }
+                else {
+                  clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                }
+              }
+              link.replaceWith(clonedLink);
+          }
+      }
+  };
+})();
+</script></body></html>
